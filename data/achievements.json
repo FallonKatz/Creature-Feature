@@ -1,0 +1,18 @@
+{
+    "5_tasks": {
+        "title": "5 Tasks Completed",
+        "image": "https://yourusername.github.io/creature-feature/badges/fivetasks.png"
+    },
+    "10_tasks": {
+        "title": "10 Tasks Completed",
+        "image": "https://yourusername.github.io/creature-feature/badges/tentasks.png"
+    },
+    "miss_task": {
+        "title": "Missed Task",
+        "image": "https://yourusername.github.io/creature-feature/badges/misstask.png"
+    },
+    "miss_5_tasks": {
+        "title": "Harold says to lock in, bud",
+        "image": "https://yourusername.github.io/creature-feature/badges/missfive.png"
+    }
+}

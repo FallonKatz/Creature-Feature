@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About - Creature Feature</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="creatures.html">Creatures</a>
+        </nav>
+
+        <header class="header">
+            <h1>About Creature Feature</h1>
+        </header>
+
+        <section class="info-card">
+            <h2>What is this?</h2>
+            <p>
+                Creature Feature is a task management app created by Mars-Morgan Anthony and Fallon Katz for their Mobile Application Development class.
+                (We wanted to do something simple for the project but we had a little too much fun.)
+            </p>
+        </section>
+        
+        <section class="info-card">
+            <h2>How it works</h2>
+            <ul>
+                <li>Creature designs are displayed as animated GIFs with accessories (Fallon drew them!)</li>
+                <li>Achievements are fetched from a REST-style GitHub Pages endpoint</li>
+                <li>Tasks are stored locally using SQLite </li>
+            </ul>
+        </section>
+
+        <div id="terminal">
+            <div id="terminal-header">
+                creature_console
+            </div>
+
+            <div id="terminal-output">
+                <p>> type a command...</p>
+            </div>
+
+            <div id="terminal-input-line">
+                <span>> </span>
+                <input type="text" id="terminal-input" autocomplete="off">
+            </div>
+        </div>
+
+        <footer>
+            <p>Creature Feature</p>
+        </footer>
+
+        <script>
+
+            const input = document.getElementById("terminal-input");
+            const output = document.getElementById("terminal-output");
+
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    const command = input.value.trim().toLowerCase();
+                    output.innerHTML += `<p>> ${command}</p>`;
+
+                    if (command === "/creature") {
+                        output.innerHTML += `
+<pre>
+( ) ( )
+( ' . ')
+(   .   )
+( '')('' )
+</pre>
+                        `;
+
+                    } else if (command === "/help") {
+                        output.innerHTML += `
+<p>Available commands:</p>
+<p>/creature</p>
+<p>git status</p>
+<p>git commit</p>
+<p>git push</p>
+<p>git pull</p>
+<p>git merge</p>
+<p>git branch</p>
+<p>git log</p>
+                        `;
+
+                    } else if (command === "git status") {
+                    output.innerHTML += `
+<pre>
+On branch main
+
+Your creatures are happy.
+nothing to commit, working tree clean
+</pre>
+                    `;
+
+                }
+
+                else if (command === "git commit") {
+                    output.innerHTML += `
+<pre>
+[main 4f3a2c] Added emotional support creature
+1 file changed, 27 questionable decisions inserted
+</pre>
+                    `;
+
+                }
+
+                else if (command === "git push") {
+                    output.innerHTML += `
+<pre>
+Uploading creatures to the feature...
+Deployment successful.
+</pre>
+                    `;
+                }
+
+                else if (command === "git pull") {
+                    output.innerHTML += `
+<pre>
+Already up to date.
+Unlike the documentation.
+</pre>
+                    `;
+
+                }
+
+                else if (command === "git merge") {
+                    output.innerHTML += `
+<pre>
+Merge conflict detected:
+
+grem.creature
+babybot.creature
+
+Resolution: They are now friends.
+No further action required.
+
+</pre>
+                    `;
+                }
+
+                else if (command === "git branch") {
+                    output.innerHTML += `
+<pre>
+* main
+creature-testing
+definitely-not-broken
+</pre>
+                    `;
+
+                }
+
+                else if (command === "git log") {
+                    output.innerHTML += `
+<pre>
+commit a81f3c - Added cutie patootie
+commit 94f2ab - Removed accidental nightmare creature
+commit 11ac9d - Initial commit
+</pre>
+                    `;
+
+                }
+
+                else {
+                    output.innerHTML += `<p>Unknown command.</p>`;
+                }
+
+                output.scrollTop = output.scrollHeight;
+                input.value = "";
+            }
+        });
+        </script>
+    </body>
+</html>

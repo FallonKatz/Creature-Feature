@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Creatures - Creature Feature</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="creatures.html">Creatures</a>
+        </nav>
+
+        <header class="header">
+            <h1>Creature Designs</h1>
+            <p>Click the accessory buttons to these customize creatures!</p>
+            <p>Note from Fallon: I drew these!</p>
+        </header>
+
+        <section class="info-card creature">
+            <h2>Fat Flock</h2>
+            <img id="bird-gif" src="creatures/bird/birdbounce.gif" width="200">
+            <p class="flavor-text">
+                A highly trained bouncing unit. Will accept hats but not responsibility.
+            </p>
+
+            <div class="buttons">
+                <button onclick="setBird('base')">Base</button>
+                <button onclick="setBird('tie')">Tie</button>
+                <button onclick="setBird('crown')">Crown</button>
+                <button onclick="setBird('hat')">Hat</button>
+            </div>
+        </section>
+
+        <section class="info-card creature">
+            <h2>Grem</h2>
+            <img id="grem-gif" src="creatures/grem/grem.gif" width="200">
+            <p class="flavor-text">
+                No thoughts. Only tail.  
+                The tail is happy. Grem is not involved in this decision.
+            </p>
+
+            <div class="buttons">
+                <button onclick="setGrem('base')">Base</button>
+                <button onclick="setGrem('tie')">Tie</button>
+                <button onclick="setGrem('crown')">Crown</button>
+                <button onclick="setGrem('hat')">Hat</button>
+            </div>
+        </section>
+
+        <section class="info-card creature">
+            <h2>Onion Boy</h2>
+            <img id="onion-gif" src="creatures/onionboy/onionboy.gif" width="200">
+            <p class="flavor-text">
+                Layers of personality. Do not peel unless emotionally prepared.
+            </p>
+
+            <div class="buttons">
+                <button onclick="setOnion('base')">Base</button>
+                <button onclick="setOnion('tie')">Tie</button>
+                <button onclick="setOnion('crown')">Crown</button>
+                <button onclick="setOnion('hat')">Hat</button>
+            </div>
+        </section>
+
+        <section class="info-card creature">
+            <h2>GCC</h2>
+            <img id="gcc-gif" src="creatures/gcc/gcc.gif" width="200">
+            <p class="flavor-text">
+                Grilled Cheese Crab. Dances constantly. 
+                No one knows where the grilled cheese comes from, but it is legally required for performance.
+            </p>
+
+            <div class="buttons">
+                <button onclick="setGcc('base')">Base</button>
+                <button onclick="setGcc('tie')">Tie</button>
+                <button onclick="setGcc('crown')">Crown</button>
+                <button onclick="setGcc('hat')">Hat</button>
+            </div>
+        </section>
+
+        <section class="info-card creature">
+            <h2>Baby Bot</h2>
+            <img id="baby-gif" src="creatures/babybot/babybot.gif" width="200">
+            <p class="flavor-text">
+                So that's why the RAM prices are so high.
+            </p>
+
+            <div class="buttons">
+                <button onclick="setBaby('base')">Base</button>
+                <button onclick="setBaby('tie')">Tie</button>
+                <button onclick="setBaby('crown')">Crown</button>
+                <button onclick="setBaby('hat')">Hat</button>
+            </div>
+        </section>
+
+        <div id="deadzone-layer"></div>
+
+        <div id="deadzone-popup">
+            <p id="deadzone-text"></p>
+        </div>
+
+        <script src="creatures.js"></script>
+
+        <script>
+            const messages = [
+                "This space is under observation. Your actions have been noted.",
+                "Something was supposed to be here. It left.",
+                "The edge of the habitat feels unstable here.",
+                "A creature was briefly here. It has since relocated emotionally.",
+                "You disturbed the habitat edge. Grem did not approve this interaction.",
+                "Fat Flock denies responsibility for this area.",
+                "GCC was here earlier. It left for important grilled cheese reasons.",
+                "Click registered. Meaning not assigned.",
+                "This region is intentionally undefined. Please enjoy the ambiguity.",
+                "You have interacted with a concept, not a place."
+            ];
+
+            const layer = document.getElementById("deadzone-layer");
+            const popup = document.getElementById("deadzone-popup");
+            const text = document.getElementById("deadzone-text");
+
+            let hideTimeout;
+
+            layer.addEventListener("click", (e) => {
+                if (e.target.closest(".creature") || e.target.closest(".nav") || e.target.closest(".header")) {
+                    return;
+                }
+
+                const msg = messages[Math.floor(Math.random() * messages.length)];
+                text.textContent = msg;
+                popup.classList.add("show");
+
+                clearTimeout(hideTimeout);
+                hideTimeout = setTimeout(() => {
+                    popup.classList.remove("show");
+                }, 5000);
+            });
+        </script>
+    </body>
+</html>
